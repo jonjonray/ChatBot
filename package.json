@@ -1,22 +1,15 @@
 {
-  "name": "chatbot",
+  "name": "chrisbot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jonjonray/ChatBot.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jonjonray/ChatBot/issues"
-  },
-  "homepage": "https://github.com/jonjonray/ChatBot#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "botbuilder": "^3.11.0",
+    "restify": "^6.3.1"
   }
 }
