@@ -12,3 +12,6 @@ const LunchInstanceSchema = Schema({
 });
 
 module.exports = mongoose.model('LunchInstance', LunchInstanceSchema);
+
+//send data
+//
