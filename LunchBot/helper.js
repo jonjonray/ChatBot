@@ -43,10 +43,10 @@ function validate(token){
 // }
 
 
-function view(lunch) {
+function view(lunches) {
 
   let outputString = "```";
-  lunch.forEach((el) => {
+  lunches.forEach((el) => {
     if (el.open) {
       outputString += `${el.location}\t\t${el.attendees}\t\n`;
     }
