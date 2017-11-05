@@ -1,23 +1,20 @@
 const mongoose = require('mongoose');
 // Load schema
-const User = require('./models/user-list');
+//const User = require('./models/user-list');
 
-function createLunch(user_id, result) {
-  if (result === null) {
-    const newUser = new User({
-      id: user_id
-    });
-    const newLunch = new Lunch(
-
-    )
-    newUser.save();
-    console.log('Added a new lunch into collection');
-    return newUser;
-  }
-  else {
-    return result;
-  }
-}
+// function createLunch(lunch_id, result) {
+//   if (result === null) {
+//     const newLunch = new User({
+//       id: lunch_id
+//     });
+//     newUser.save();
+//     console.log('Added a new lunch into collection');
+//     return newLunch;
+//   }
+//   else {
+//     return result;
+//   }
+// }
 
 // Protect bot token ID
 require('dotenv').config('private.env');
@@ -29,21 +26,21 @@ function validate(token){
     return token === tokenID;
 }
 
-//for displaying text in dropdown
-function droptext(lunch){
-    let display = [];
-
-    lunch.forEach(function(el, index){
-
-        display[index] = {
-            text: el.location, ///lunch location
-            value: el.number
-        };
-
-    });
-
-    return display;
-}
+// //for displaying text in dropdown
+// function droptext(lunch){
+//     let display = [];
+//
+//     lunch.forEach(function(el, index){
+//
+//         display[index] = {
+//             text: el.location, ///lunch location
+//             value: el.number
+//         };
+//
+//     });
+//
+//     return display;
+// }
 
 
 function view(lunch) {
@@ -59,10 +56,10 @@ function view(lunch) {
 
 
 module.exports = {
-  createLunch: createLunch, //user
+  //createLunch: createLunch, //user
   validate: validate,
-  // view: view,
-  droptext: droptext
+  view: view,
+  // droptext: droptext
 
 
 };

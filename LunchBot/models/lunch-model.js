@@ -13,7 +13,11 @@ const LunchSchema = new Schema({
 
 // Create user schema
 const UserSchema = new Schema({
+<<<<<<< HEAD
   id: String
+=======
+  id: String,
+>>>>>>> 741bc0827e5b622b531f0ca52b888a8f2029e6f7
 });
 
 // Create lunch model (which will house data on each person)
