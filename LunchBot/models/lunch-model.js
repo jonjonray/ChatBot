@@ -14,7 +14,6 @@ const LunchSchema = new Schema({
 // Create user schema
 const UserSchema = new Schema({
   id: String,
-
 });
 
 // Create user model (which will house each person's list)
