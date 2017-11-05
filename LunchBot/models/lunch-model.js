@@ -13,9 +13,9 @@ const LunchSchema = new Schema({
 
 // Create user schema
 const UserSchema = new Schema({
-  id: String,
-
+  id: String
 });
 
-// Create user model (which will house each person's list)
+// Create lunch model (which will house data on each person)
 const Lunch = mongoose.model('lunch', LunchSchema);
+// const a = new Lunch('Olivegard')

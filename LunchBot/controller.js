@@ -23,7 +23,10 @@ const helper = require('./helpers');
 
 
 // deployment
-mongoose.connect(ROUTE);
+var mongoDB = 'mongodb://reidjs:abc123@ds249325.mlab.com:49325/my_db';
+mongoose.connect(mongoDB, {
+  useMongoClient: true
+});
 
 mongoose.connection.once('open', () => {
   console.log('Connected to mongoDB.');

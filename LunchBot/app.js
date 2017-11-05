@@ -3,7 +3,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const controller = require('./controller');
-
+//Import the mongoose module
+var mongoose = require('mongoose');
+//Set up default mongoose connection
+var mongoDB = 'mongodb://reidjs:abc123@ds249325.mlab.com:49325/my_db';
+mongoose.connect(mongoDB, {
+  useMongoClient: true
+});
 // Instantiate express and allow it to be 'required'
 const app = express();
 app.use(bodyParser.json());
