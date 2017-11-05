@@ -17,12 +17,17 @@ var mongoDB = userArgs[0];
 mongoose.connect(mongoDB);
 var db = mongoose.connection;
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection error:'));
+var lunchInstances = [];
+var users = [];
 
-var lunchInstances = []
-var users = []
-
-function lunchInstanceCreate() {
-  lunchinstancedetail = {};
+function lunchInstanceCreate(lunchLocation, owner, cb) {
+  lunchinstancedetail = {
+    lunchLocation: lunchLocation,
+    owner: owner
+    // attendees: attendees,
+    // time: time,
+    // open: open
+  };
   var lunchinstance = new LunchInstance(lunchinstancedetail);
   lunchinstance.save(function(err) {
     if (err) {
@@ -30,12 +35,13 @@ function lunchInstanceCreate() {
       return
     }
     console.log('New Lunch Instance: ' + lunchinstance);
-    lunches.push(lunchinstance)
+    lunchInstances.push(lunchinstance)
+    // debugger
     cb(null, lunchinstance)
   })
 }
-function userCreate() {
-  userdetail = {};
+function userCreate(slackId, cb) {
+  userdetail = {slackId: slackId};
   var user = new User(userdetail);
   user.save(function(err) {
     if (err) {
@@ -49,7 +55,7 @@ function userCreate() {
 }
 
 function createUsers(cb) {
-  async.prallel([
+  async.parallel([
     function(callback) {
       userCreate('bob', callback)
     },
@@ -58,3 +64,33 @@ function createUsers(cb) {
     }
   ], cb);
 }
+function createLunchInstances(cb) {
+  async.parallel([
+    function(callback) {
+      lunchInstanceCreate("Applebees", users[0], callback);
+    },
+    function(callback) {
+      lunchInstanceCreate("Dennys", users[1], callback);
+    }
+  ], cb);
+}
+
+async.series([
+  createUsers,
+  createLunchInstances
+],
+
+function(err, results) {
+    if (err) {
+        console.log('FINAL ERR: '+err);
+    }
+    else {
+        console.log('lunchInstances: '+lunchInstances);
+
+    }
+    //All done, disconnect from database
+    mongoose.connection.close();
+});
+
+//call with
+//node populatedb mongodb://reidjs:abc123@ds249325.mlab.com:49325/my_db

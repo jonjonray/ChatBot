@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.5.0",
     "botbuilder": "^3.11.0",
     "db-query": "^0.1.4",
     "dotenv": "^4.0.0",
