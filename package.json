@@ -1,0 +1,20 @@
+{
+  "name": "lil_botty",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonjonray/ChatBot/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/client": "^3.14.1",
+    "botbuilder": "^3.11.0",
+    "restify": "^6.3.1"
+  }
+}
