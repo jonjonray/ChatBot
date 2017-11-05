@@ -78,7 +78,7 @@ app.post('/lunch', urlencodedParser, (req, res) =>{
     }else{
         var message = {
             "text": "Today's Lunch Plans",
-            "attachments": 
+            "attachments":
                 {
                     "text": "Chris, Reid, Jonathan are going to Olive Garden",
                     "fallback": "Shame... buttons aren't supported in this land",
@@ -118,3 +118,34 @@ function sendMessageToSlackResponseURL(responseURL, JSONmessage){
         }
     })
 }
+
+
+
+
+function lunchBuilder(objectString) {
+  let lunchArray = eval(objectString);
+  let attachments = [];
+    for (var i = 0; i < lunchArray.length; i++) {
+      let intObject = lunchArray[i];
+      let people = intObject["attendees"].join(",");
+      let restaurantName = intObject['lunchLocation'];
+      let text = people + " are going to " + restaurantName
+      attachments.push( {
+          "text": text,
+          "fallback": "Shame... buttons aren't supported in this land",
+          "callback_id": "lunch",
+          "color": "#3AA3E3",
+          "attachment_type": "default",
+          "actions": [
+              {
+                  "name": "RSVP",
+                  "text": "RSVP",
+                  "type": "button",
+                  "value": intObject["lunchId"]
+              }
+          ]
+      } )
+    }
+
+    return attachments
+  }
